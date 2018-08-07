@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form method="post" action="/post_user">
+      <label>Nome</label>
+      <input id="username" type="text" name="username" value="">
+      <label>E-mail</label>
+      <input id="email"type="email" name="email" value="">
+      <label>Password</label>
+      <input id="password" type="password" name="password" value="">
+      <input type='submit' value='Enviar'>
+    </form>
+
+    <br/>
+      <!-- {% for user  in myUser %}
+        <li>{{ user.id }}. {{ user.username }} - {{user.email}}</li>
+      {% endfor %} -->
+  </body>
+</html>
