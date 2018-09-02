@@ -1,1 +1,1 @@
-Primeiro arquivo do projeto
+Projeto BrLab - Sistema para Gerenciamento de Laboratórios Remotos
