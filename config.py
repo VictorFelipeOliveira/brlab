@@ -3,15 +3,15 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 
 class Config(object):
-	DEBUG = False
+	DEBUG = True
 	TESTING = False
 	CSRF_ENABLED = True
 	SECRET_KEY = 'chave-secreta'
-	SQLALCHEMY_DATABASE_URI = os.environ['DATABSE_URL']
+	SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
 
 
 class ProductionConfig(Config):
-	DEBUG = False
+	DEBUG = True
 
 class StagingConfig(Config):
 	DEVELOPMENT = True

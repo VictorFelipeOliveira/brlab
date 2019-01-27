@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Login</title>
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" type="text/css" href="../static/css/login.css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+<!--Coded with love by Mutiullah Samim-->
+<body>
+	<div class="container h-100">
+	  	<div class="d-flex justify-content-center h-100">
+		  <!--<form action="{{ url_for('equipamentos') }}" method="POST">-->
+			<div class="user_card">
+
+				<div class="d-flex justify-content-center">
+					<div class="brand_logo_container">
+						<img src="../static/images/logo_teste.png" class="brand_logo" alt="Logo Teste BrLab">
+					</div>
+				</div>
+
+				<div class="d-flex justify-content-center form_container">
+					{% block body %}
+					<!--{% for user in lista %}-->
+					<!--<li>{{ user.username }}</li>-->
+					<!--{% endfor %}-->
+					{% if session['logged_in'] %}
+
+						Você está logado meu jovem!!!
+
+					{% else %}
+					 <form action="{{ url_for('inicio') }}">
+						<div class="input-group mb-3">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-user"></i></span>
+							</div>
+							<input type="text" id="username" name="username" class="form-control input_user" value="" placeholder="username">
+						</div>
+						<div class="input-group mb-2">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-key"></i></span>
+							</div>
+							<input type="password" name="password" id="senha" class="form-control input_pass" value="" placeholder="password">
+						</div>
+						<div class="form-group">
+							<div class="custom-control custom-checkbox">
+								<input type="checkbox" class="custom-control-input" id="customControlInline">
+								<label class="custom-control-label" for="customControlInline">Lembre-me</label>
+							</div>
+						</div>
+						<div class="d-flex justify-content-center mt-3 login_container">
+							<button type="submit" name="entrar" class="button btn login_btn">Entrar</button>
+						</div>
+					 </form>
+					{% endif %}
+					{% endblock %}
+				</div>
+
+				<div class="mt-4">
+					<div class="d-flex justify-content-center links">
+						Não possui conta? <a href="#" class="ml-2">Cadastre-se</a>
+					</div>
+					<div class="d-flex justify-content-center links">
+						<a href="#">Esqueci minha senha</a>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
