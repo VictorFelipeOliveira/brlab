@@ -92,24 +92,13 @@ def login():
         print (user)
         if user and user.password == form.senha.data:
             login_user(user)
+            return redirect(url_for('inicio'))
         else:
             flash("Login inválido")
     else:
         print(form.errors)
     return render_template('form_login.html', form=form)
 
-# @app.route("/login", methods=['POST', 'GET'])
-# def login():
-#     listaUsuarios = Usuario.query.all()
-#     if request.method == 'POST':
-#         oUsuario = Usuario.query.filter_by().first()
-#         if request.form['username'] == oUsuario.username and request.form['password'] == oUsuario.senha:
-#             session['logged_in'] = True
-#             return "Pronto abigo"
-#         else:
-#             flash('Senha errada')
-#             return render_template("form_login2.html", lista=listaUsuarios)
-#     return render_template("form_login2.html")
 
 
 @app.route('/logout')
