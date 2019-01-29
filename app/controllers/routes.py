@@ -1,9 +1,9 @@
 from app import app
 from flask import render_template, request, session, flash, redirect, url_for
-# from flask_security import login_required, LoginForm
 from flask_login import LoginManager, login_user, login_required
 from app.models.usuario import Usuario
 from app.models.forms import LoginForm
+
 
 
 # config
@@ -19,7 +19,6 @@ login_manager.init_app(app)
 @login_manager.user_loader
 def load_user(sequencial):
     return Usuario.get(sequencial)
-
 
 @app.route('/')
 # @login_required

@@ -1,8 +1,4 @@
-# from flask_security import UserMixin
 from app.models import db
-# from SQLAlchemyUserDatastore
-# user_datastore = SQLAlchemyUserDatastore(db, User, Role)
-# security = Security(app, user_datastore)
 
 
 class Usuario(db.Model):
