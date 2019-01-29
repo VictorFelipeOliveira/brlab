@@ -9,9 +9,28 @@ class Usuario(db.Model):
     sequencial = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(100), unique=True, nullable=False)
     email = db.Column(db.String(255), unique=True)
-    senha = db.Column(db.String(255), nullable=False)
+    password = db.Column(db.String(255), nullable=False)
     # active = db.Column(db.Boolean())
     # confirmed_at = db.Column(db.DateTime())
+
+    @property
+    def is_authenticated(self):
+        return True
+
+    @property
+    def is_active(self):
+        return True
+
+    @property
+    def is_anonymous(self):
+        return False
+
+    def get_id(self):
+        return str(self.sequencial)
+
+    def get(self):
+        return self
+
 
     def __init__(self, username, email, password):
         self.username = username
@@ -20,4 +39,4 @@ class Usuario(db.Model):
         # self.active = active
 
     def __repr__(self):
-        return '<User %r>' % self.email
+        return '<Usuario {0} -> {1}'.format(self.username, self.email)
