@@ -7,7 +7,7 @@ class Usuario(db.Model):
     email = db.Column(db.String(255), unique=True)
     password = db.Column(db.String(255), nullable=False)
     # active = db.Column(db.Boolean())
-    # confirmed_at = db.Column(db.DateTime())
+    last_login = db.Column(db.DateTime())
 
     @property
     def is_authenticated(self):
@@ -28,7 +28,7 @@ class Usuario(db.Model):
         return self
 
 
-    def __init__(self, username, email, password):
+    def __init__(username, email, password):
         self.username = username
         self.email = email
         self.password = password
