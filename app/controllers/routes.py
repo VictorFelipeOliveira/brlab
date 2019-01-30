@@ -32,18 +32,21 @@ def inicio():
     return render_template('index.html')
 
 
-@app.route('/labs')
+@app.route('/labs')     # Lista todos os laboratórios disponíveis
 @login_required
 def labs():
     return render_template("labs.html")
 
+@app.route('/equipamentos')     # Lista todos os equipamentos disponíveis
+def equipamentos():
+    return "Rota de Equipamentos"
 
-@app.route('/publicacoes')
+@app.route('/publicacoes')      # Apenas para divulgar publicações
 def publicacoes():
     return render_template("publicacoes.html")
 
 
-@app.route('/projetos')
+@app.route('/projetos')         # Apenas para divulgar projetos
 def projetos():
     return render_template("projetos.html")
 
@@ -78,17 +81,12 @@ def publications():
     return "Rota de Publicações"
 
 
-@app.route('/equipamentos')
-def equipamentos():
-    return "Rota de Equipamentos"
-
-
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
     if form.validate_on_submit():
         user = Usuario.query.filter_by(username=form.username.data).first()
-        print (user)
+        print(user)
         if user and user.password == form.senha.data:
             login_user(user)
             return redirect(url_for('inicio'))
