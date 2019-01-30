@@ -9,12 +9,7 @@ app = Flask(__name__)
 from app.models.usuario import Usuario
 from app.models.papel import Papel
 from app.models import db
-admin = Admin(app, name="administrador", 
-    index_view = AdminIndexView(
-        name="Home",
-        template="admin/index.html",
-        url="/"
-    ))
-admin.add_view(ModelView(Usuario, db.session))
-admin.add_view(ModelView(Papel, db.session))
+# admin = Admin(app, name="administrador", template_mode=
+# admin.add_view(ModelView(Usuario, db.session))
+# admin.add_view(ModelView(Papel, db.session))
 # from app.controllers import routes
