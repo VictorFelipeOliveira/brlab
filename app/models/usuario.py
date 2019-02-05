@@ -9,6 +9,7 @@ class Usuario(db.Model):
     password = db.Column(db.String(255), nullable=False)
     # active = db.Column(db.Boolean())
     # last_login = db.Column(db.DateTime)
+    # papel = db.relationship("Papel", uselist=False, backref = "usuario")
 
     @property
     def is_authenticated(self):
