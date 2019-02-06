@@ -1,16 +1,13 @@
 from app.models import db
 
-
 class Usuario(db.Model):
     __tablename__ = 'usuarios'
     sequencial = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(100), unique=True, nullable=False)
     email = db.Column(db.String(255), unique=True)
     password = db.Column(db.String(255), nullable=False)
-    # active = db.Column(db.Boolean())
-    # last_login = db.Column(db.DateTime)
-    # papel = db.relationship("Papel", uselist=False, backref = "usuario")
-
+    papel = db.relationship('Papel', backref="usuario", lazy=True)
+    
     @property
     def is_authenticated(self):
         return True
