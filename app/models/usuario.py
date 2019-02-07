@@ -6,7 +6,7 @@ class Usuario(db.Model):
     username = db.Column(db.String(100), unique=True, nullable=False)
     email = db.Column(db.String(255), unique=True)
     password = db.Column(db.String(255), nullable=False)
-    papel = db.relationship('Papel', backref="usuario", lazy=True)
+    papel_id = db.Column(db.Integer, db.ForeignKey('papeis.sequencial'), nullable=False)
     
     @property
     def is_authenticated(self):
@@ -35,4 +35,6 @@ class Usuario(db.Model):
         # self.active = active
 
     def __repr__(self):
-        return '<Usuario {0} -> {1}'.format(self.username, self.email)
+        return self.username
+
+db.create_all()

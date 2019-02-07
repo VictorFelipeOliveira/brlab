@@ -1,8 +1,14 @@
-from app import app
+from app import app, admin
 from flask import render_template, request, session, flash, redirect, url_for
-from flask_login import LoginManager, login_user, login_required
+from app.models import db
+from flask_login import LoginManager, login_user, login_required, current_user
+from flask_admin import BaseView, expose
+from flask_admin.contrib.sqla import ModelView
+from flask_admin.base import MenuLink
+from app.models.papel import Papel
 from app.models.usuario import Usuario
-from app.models.forms import LoginForm
+from app.models.equipamento import Equipamento
+from app.models.laboratorio import Laboratorio
 
 
 
@@ -21,7 +27,7 @@ def load_user(sequencial):
     return Usuario.get(sequencial)
 
 @app.route('/')
-# @login_required
+@login_required
 def index():
     return render_template('index.html')
 
@@ -38,10 +44,12 @@ def labs():
     return render_template("labs.html")
 
 @app.route('/equipamentos')     # Lista todos os equipamentos disponíveis
+@login_required
 def equipamentos():
     return "Rota de Equipamentos"
 
 @app.route('/publicacoes')      # Apenas para divulgar publicações
+@login_required
 def publicacoes():
     return render_template("publicacoes.html")
 
@@ -80,7 +88,6 @@ def reservas():
 def publications():
     return "Rota de Publicações"
 
-
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
@@ -96,9 +103,20 @@ def login():
         print(form.errors)
     return render_template('form_login.html', form=form)
 
-
-
 @app.route('/logout')
 def logout():
     session['logged_in'] = False
     return inicio()
+
+class NotificationsView(BaseView):
+    @expose('/')
+    def index(self):
+        return self.render('admin/notificacoes.html')
+ 
+admin.add_link(MenuLink(name='Back Home', url='/'))
+admin.add_view(ModelView(Papel, db.session))
+admin.add_view(ModelView(Usuario, db.session))
+admin.add_view(ModelView(Laboratorio, db.session))
+admin.add_view(ModelView(Equipamento, db.session))
+admin.add_view(NotificationsView(name="Notificações", endpoint="notificacoes"))
+db.create_all()
