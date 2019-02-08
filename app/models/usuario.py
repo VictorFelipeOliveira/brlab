@@ -1,6 +1,7 @@
 from app.models import db
+from flask_security import UserMixin
 
-class Usuario(db.Model):
+class Usuario(db.Model, UserMixin):
     __tablename__ = 'usuarios'
     sequencial = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(100), unique=True, nullable=False)
@@ -36,5 +37,3 @@ class Usuario(db.Model):
 
     def __repr__(self):
         return self.username
-
-db.create_all()

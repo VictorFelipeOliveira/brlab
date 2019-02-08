@@ -26,8 +26,12 @@ login_manager.init_app(app)
 def load_user(sequencial):
     return Usuario.get(sequencial)
 
+@app.before_first_request
+def create_tables():
+    db.create_all()
+
 @app.route('/')
-@login_required
+# @login_required
 def index():
     return render_template('index.html')
 
@@ -39,12 +43,12 @@ def inicio():
 
 
 @app.route('/labs')     # Lista todos os laboratórios disponíveis
-@login_required
+# @login_required
 def labs():
     return render_template("labs.html")
 
 @app.route('/equipamentos')     # Lista todos os equipamentos disponíveis
-@login_required
+# @login_required
 def equipamentos():
     return "Rota de Equipamentos"
 
@@ -103,10 +107,10 @@ def login():
         print(form.errors)
     return render_template('form_login.html', form=form)
 
-@app.route('/logout')
-def logout():
-    session['logged_in'] = False
-    return inicio()
+# @app.route('/logout')
+# def logout():
+#     session['logged_in'] = False
+#     return inicio()
 
 class NotificationsView(BaseView):
     @expose('/')
@@ -119,4 +123,4 @@ admin.add_view(ModelView(Usuario, db.session))
 admin.add_view(ModelView(Laboratorio, db.session))
 admin.add_view(ModelView(Equipamento, db.session))
 admin.add_view(NotificationsView(name="Notificações", endpoint="notificacoes"))
-db.create_all()
+# db.create_all()

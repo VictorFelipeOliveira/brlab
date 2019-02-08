@@ -7,7 +7,6 @@ app = Flask(__name__)
 admin = Admin(app, name="administrador", template_mode='bootstrap3')
 
 from app.models import db
-# db.create_all()
 
 from app.models.papel import Papel
 from app.models.usuario import Usuario
