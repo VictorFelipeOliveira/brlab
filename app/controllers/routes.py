@@ -10,8 +10,6 @@ from app.models.usuario import Usuario
 from app.models.equipamento import Equipamento
 from app.models.laboratorio import Laboratorio
 
-
-
 # config
 app.config.update(
     DEBUG=True,

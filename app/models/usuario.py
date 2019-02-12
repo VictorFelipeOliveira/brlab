@@ -7,7 +7,13 @@ class Usuario(db.Model, UserMixin):
     username = db.Column(db.String(100), unique=True, nullable=False)
     email = db.Column(db.String(255), unique=True)
     password = db.Column(db.String(255), nullable=False)
+<<<<<<< HEAD
     papel_id = db.Column(db.Integer, db.ForeignKey('papeis.sequencial'), nullable=False)
+=======
+    last_login = db.Column(db.DateTime())
+    last_logout = db.Column(db.DateTime())
+    papel = db.relationship('Papel', backref="usuario", lazy=True)
+>>>>>>> models
     
     @property
     def is_authenticated(self):

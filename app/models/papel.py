@@ -12,4 +12,8 @@ class Papel(db.Model):
         descricao = self.descricao
 
     def __repr__(self):
+<<<<<<< HEAD
         return ' Papel {0}: {1}'.format(self.nome, self.descricao)
+=======
+        return ' Usuario {0}: {1}'.format(self.nome, self.descricao)
+>>>>>>> models

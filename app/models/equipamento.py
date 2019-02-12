@@ -1,6 +1,4 @@
-from app.models import db, engine
-from sqlalchemy.orm import sessionmaker
-# from app.models.laboratorio import Laboratorio
+from app.models import db
 
 class Equipamento(db.Model):
     __tablename__ = 'equipamentos'
@@ -15,6 +13,3 @@ class Equipamento(db.Model):
 
     def __repr__(self):
         return ' Equipamento {0}: {1}'.format(self.nome, self.descricao)
-
-# db.create_all()
-# Session = sessionmaker(bind=engine)
