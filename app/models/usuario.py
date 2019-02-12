@@ -6,6 +6,8 @@ class Usuario(db.Model):
     username = db.Column(db.String(100), unique=True, nullable=False)
     email = db.Column(db.String(255), unique=True)
     password = db.Column(db.String(255), nullable=False)
+    last_login = db.Column(db.DateTime())
+    last_logout = db.Column(db.DateTime())
     papel = db.relationship('Papel', backref="usuario", lazy=True)
     
     @property

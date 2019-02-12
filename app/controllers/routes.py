@@ -4,8 +4,6 @@ from flask_login import LoginManager, login_user, login_required
 from app.models.usuario import Usuario
 from app.models.forms import LoginForm
 
-
-
 # config
 app.config.update(
     DEBUG=True,

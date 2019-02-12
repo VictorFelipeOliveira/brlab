@@ -13,5 +13,3 @@ class Papel(db.Model):
 
     def __repr__(self):
         return ' Usuario {0}: {1}'.format(self.nome, self.descricao)
-
-# db.create_all()
