@@ -1,4 +1,4 @@
-from app import app, admin
+from app import app
 from flask import render_template, request, session, flash, redirect, url_for
 from app.models import db
 from flask_login import LoginManager, login_user, login_required, current_user
@@ -92,18 +92,19 @@ def publications():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    form = LoginForm()
-    if form.validate_on_submit():
-        user = Usuario.query.filter_by(username=form.username.data).first()
-        print(user)
-        if user and user.password == form.senha.data:
-            login_user(user)
-            return redirect(url_for('inicio'))
-        else:
-            flash("Login inválido")
-    else:
-        print(form.errors)
-    return render_template('form_login.html', form=form)
+    # form = LoginForm()
+    # if form.validate_on_submit():
+    #     user = Usuario.query.filter_by(username=form.username.data).first()
+    #     print(user)
+    #     if user and user.password == form.senha.data:
+    #         login_user(user)
+    #         return redirect(url_for('inicio'))
+    #     else:
+    #         flash("Login inválido")
+    # else:
+    #     print(form.errors)
+    # return render_template('form_login.html')
+    return 'LOGIN em fase de testes'
 
 # @app.route('/logout')
 # def logout():
@@ -115,10 +116,10 @@ class NotificationsView(BaseView):
     def index(self):
         return self.render('admin/notificacoes.html')
  
-admin.add_link(MenuLink(name='Back Home', url='/'))
-admin.add_view(ModelView(Papel, db.session))
-admin.add_view(ModelView(Usuario, db.session))
-admin.add_view(ModelView(Laboratorio, db.session))
-admin.add_view(ModelView(Equipamento, db.session))
-admin.add_view(NotificationsView(name="Notificações", endpoint="notificacoes"))
+# admin.add_link(MenuLink(name='Back Home', url='/'))
+# admin.add_view(ModelView(Papel, db.session))
+# admin.add_view(ModelView(Usuario, db.session))
+# admin.add_view(ModelView(Laboratorio, db.session))
+# admin.add_view(ModelView(Equipamento, db.session))
+# admin.add_view(NotificationsView(name="Notificações", endpoint="notificacoes"))
 # db.create_all()
