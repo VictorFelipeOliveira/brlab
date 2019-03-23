@@ -30,28 +30,28 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="{{url_for('inicio')}}">Início</a>
+              <a class="nav-link" href="{{ url_for('inicio') }}">Início</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{url_for('labs')}}">Laboratórios</a>
+              <a class="nav-link" href="{{ url_for('labs') }}">Laboratórios</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{url_for('publicacoes')}}">Publicações</a>
+              <a class="nav-link" href="{{ url_for('publicacoes') }}">Publicações</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{url_for('projetos')}}">Projetos</a>
+              <a class="nav-link" href="{{ url_for('projetos')}}">Projetos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{url_for('parceiros')}}">Parceiros</a>
+              <a class="nav-link" href="{{ url_for('parceiros')}}">Parceiros</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{url_for('contatos')}}">Contatos</a>
+              <a class="nav-link" href="{{ url_for('contatos')}}">Contatos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{url_for('sobre')}}">Sobre</a>
+              <a class="nav-link" href="{{ url_for('sobre')}}">Sobre</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{url_for('login')}}">Login</a>
+              <a class="nav-link" href="{{ url_for('login') }}">Login</a>
             </li>
           </ul>
         </div>
@@ -204,12 +204,16 @@
 
       <!-- Call to Action Section -->
       <div class="row mb-4">
-        <div class="col-md-8">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, expedita, saepe, vero rerum deleniti beatae veniam harum neque nemo praesentium cum alias asperiores commodi.</p>
+        <div id="app"class="col-md-8">
+          <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, expedita, saepe, vero rerum deleniti beatae veniam harum neque nemo praesentium cum alias asperiores commodi.</p> -->
+          <p>{{ message }}</p>
         </div>
         <div class="col-md-4">
           <a class="btn btn-lg btn-secondary btn-block" href="#">Call to Action</a>
         </div>
+        <!-- <div id="app" class="col-md-12">
+          {{ message }}
+        </div> -->
       </div>
 
     </div>
@@ -226,6 +230,7 @@
     <!-- Bootstrap core JavaScript -->
     <script src="static/vendor/jquery/jquery.min.js"></script>
     <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 
   </body>
 

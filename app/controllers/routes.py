@@ -9,6 +9,7 @@ from app.models.papel import Papel
 from app.models.usuario import Usuario
 from app.models.equipamento import Equipamento
 from app.models.laboratorio import Laboratorio
+from app.models.forms import LoginForm
 
 # config
 app.config.update(
@@ -92,19 +93,18 @@ def publications():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    # form = LoginForm()
-    # if form.validate_on_submit():
-    #     user = Usuario.query.filter_by(username=form.username.data).first()
-    #     print(user)
-    #     if user and user.password == form.senha.data:
-    #         login_user(user)
-    #         return redirect(url_for('inicio'))
-    #     else:
-    #         flash("Login inválido")
-    # else:
-    #     print(form.errors)
-    # return render_template('form_login.html')
-    return 'LOGIN em fase de testes'
+    form = LoginForm()
+    if form.validate_on_submit():
+        user = Usuario.query.filter_by(username=form.username.data).first()
+        print(user)
+        if user and user.password == form.senha.data:
+            login_user(user)
+            return redirect(url_for('inicio'))
+        else:
+            flash("Login inválido")
+    else:
+        print(form.errors)
+    return render_template('form_login.html', form=form)
 
 # @app.route('/logout')
 # def logout():
@@ -115,7 +115,7 @@ class NotificationsView(BaseView):
     @expose('/')
     def index(self):
         return self.render('admin/notificacoes.html')
- 
+
 # admin.add_link(MenuLink(name='Back Home', url='/'))
 # admin.add_view(ModelView(Papel, db.session))
 # admin.add_view(ModelView(Usuario, db.session))
